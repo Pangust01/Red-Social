@@ -6,11 +6,9 @@ import java.util.List;
 public class NodeGraph {
     private Persona user;
     private List<Persona> friends;
-    private List<NodeGraph> neighborns;
     public NodeGraph(Persona user){
         this.user = user;
         friends = new LinkedList<>();
-        neighborns = new LinkedList<>();
     }
 
     public Persona getUser() {
@@ -18,7 +16,7 @@ public class NodeGraph {
     }
 
     public void addFriend(Persona user) {
-        this.user = user;
+        friends.add(user);
     }
 
     public List<Persona> getFriends() {
@@ -29,10 +27,6 @@ public class NodeGraph {
         this.friends = friends;
     }
 
-
-    public void addNeighborns(NodeGraph neigoborn) {
-        neighborns.add(neigoborn);
-    }
 
     
     
