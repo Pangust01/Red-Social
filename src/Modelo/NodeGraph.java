@@ -1,14 +1,15 @@
 package Modelo;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+
+import java.util.Set;
 
 public class NodeGraph {
     private Persona user;
-    private List<Persona> friends;
+    private Set<Persona> friends;
     public NodeGraph(Persona user){
         this.user = user;
-        friends = new LinkedList<>();
+        friends = new HashSet<>();
     }
 
     public Persona getUser() {
@@ -19,11 +20,11 @@ public class NodeGraph {
         friends.add(user);
     }
 
-    public List<Persona> getFriends() {
+    public Set<Persona> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<Persona> friends) {
+    public void setFriends(Set<Persona> friends) {
         this.friends = friends;
     }
 

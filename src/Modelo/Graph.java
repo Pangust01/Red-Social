@@ -2,6 +2,7 @@ package Modelo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Graph {
     private final List<NodeGraph> nodes;
@@ -18,30 +19,33 @@ public class Graph {
     public void addConection(NodeGraph src, NodeGraph dest) {
         src.addFriend(dest.getUser());
         dest.addFriend(src.getUser());
+
     }
 
-    public List<Persona> getFriends(NodeGraph node){
-        for (int i = 0; i < node.getFriends().size(); i++) {
-            
-            System.out.print("Amigos" + node.getFriends() + ":");
-            for (Persona amigos : node.getFriends()) {
-                System.out.print(" -> " + amigos.getName()+" -> " + amigos.getAge());
-            }
-            
-        }
-        throw new ExceptionInInitializerError("No se inicializa una lista");
+    public Set<Persona> getFriends(NodeGraph node){
+        return node.getFriends();
     }
-
+    public List<NodeGraph> getNodes(){
+        return nodes;
+    }
     public List<Persona> recommendedFriends(NodeGraph node){
         throw new ExceptionInInitializerError("No se inicializa una lista");
     }
     public void printGraph() {
-        for (NodeGraph node : nodes) {
-            System.out.print("Amigos" + node.getFriends() + ":");
-            for (Persona neighbor : node.getFriends()) {
-                System.out.print(" -> " + neighbor.getName()+" -> " + neighbor.getAge());
+        for (NodeGraph nodeBuscar : nodes) {
+            System.out.print("\nLos amigos de " + nodeBuscar.getUser().toString()+":\n");
+            for (Persona user : nodeBuscar.getFriends()) {
+                System.out.print(" -> " + user.getName()+" con " + user.getAge()+" años");
             }
-            System.out.println();
         }
+        System.out.println("\n\nHobbies de los usuarios: \n");
+        for (NodeGraph nodeGraph : nodes) {
+
+            System.out.println(nodeGraph.getUser().getName()+" - "+nodeGraph.getUser().getInterest().toString());
+            
+        }
+
     }
+
+
 }

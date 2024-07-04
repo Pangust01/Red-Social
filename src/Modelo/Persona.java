@@ -11,12 +11,14 @@ public class Persona {
     public Persona(String name, int age) {
         this.name = name;
         this.age = age;
+        this.interest = new ArrayList<>();
     }
 
     public Persona(String name, int age, List<String> interest) {
         this.name = name;
         this.age = age;
         this.interest = new ArrayList<>();
+        
     }
 
     public String getName() {
@@ -35,14 +37,19 @@ public class Persona {
         this.age = age;
     }
 
-    public List<String> getInterest() {
-        return interest;
-    }
-
     public void setInterest(List<String> interest) {
         this.interest = interest;
     }
     
+    @Override
+    public String toString() {
+
+        return name+ "("+age+" años)";
+    }
+
+    public List<String> getInterest() {
+        return interest;
+    }
     
     
 }
