@@ -10,21 +10,36 @@ public class Graph {
         this.nodes = new ArrayList<>();
     }
 
-    public NodeGraph addNode(int value) {
-        NodeGraph newNode = new NodeGraph(new Persona());
-        nodes.add(newNode);
-        return newNode;
+    public NodeGraph addNode(NodeGraph node) { 
+        nodes.add(node);
+        return node;
     }
 
     public void addConection(NodeGraph src, NodeGraph dest) {
-        src.setFriends(dest.getFriends());
-        dest.setFriends(src.getFriends());
+        src.addFriend(dest.getUser());
+        dest.addFriend(src.getUser());
+    }
+
+    public List<Persona> getFriends(NodeGraph node){
+        for (int i = 0; i < node.getFriends().size(); i++) {
+            
+            System.out.print("Amigos" + node.getFriends() + ":");
+            for (Persona amigos : node.getFriends()) {
+                System.out.print(" -> " + amigos.getName()+" -> " + amigos.getAge());
+            }
+            
+        }
+        throw new ExceptionInInitializerError("No se inicializa una lista");
+    }
+
+    public List<Persona> recommendedFriends(NodeGraph node){
+        throw new ExceptionInInitializerError("No se inicializa una lista");
     }
     public void printGraph() {
         for (NodeGraph node : nodes) {
-            System.out.print("Vertex" + node.getFriends() + ":");
+            System.out.print("Amigos" + node.getFriends() + ":");
             for (Persona neighbor : node.getFriends()) {
-                System.out.print(" -> " + neighbor.getClass());
+                System.out.print(" -> " + neighbor.getName()+" -> " + neighbor.getAge());
             }
             System.out.println();
         }
